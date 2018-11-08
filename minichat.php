@@ -9,10 +9,19 @@
 	</head>
 	<body class="bg-dark">
 		<div class="container centered p-3">
-			<form action="minichat_post.php" method="get">
-				<div class="form-inline justify-content-center p-3 mb-5">
-					<input type="text" class="form-control col-sm-2 border-danger bg-light" id="pseudo" name="pseudo" placeholder="Pseudo">
-					<input type="password" class="form-control col-sm-2 border-danger bg-light" name="password" id="password" placeholder="Mot de passe">
+			<h3 class="text-center text-white">LOGIN</h3>
+			<form action="minichat_post.php" method="post">
+				<div class="form-inline justify-content-center p-1 mb-2">
+					<input type="text" class="form-control col-sm-2 border-danger bg-light" id="pseudo" name="Lpseudo" placeholder="Pseudo">
+					<input type="password" class="form-control col-sm-2 border-danger bg-light" name="Lpassword" id="password" placeholder="Mot de passe">
+				    <button type="submit" class="btn btn-danger">Submit</button>
+				</div>
+			</form>
+			<h3 class="text-center text-white">REGISTER</h3>
+			<form action="minichat_post.php" method="post">
+				<div class="form-inline justify-content-center p-1 mb-5">
+					<input type="text" class="form-control col-sm-2 border-danger bg-light" id="pseudo" name="Rpseudo" placeholder="Pseudo">
+					<input type="password" class="form-control col-sm-2 border-danger bg-light" name="Rpassword" id="password" placeholder="Mot de passe">
 				    <button type="submit" class="btn btn-danger">Submit</button>
 				</div>
 			</form>
@@ -30,6 +39,9 @@
 								die('Erreur');
 							}
 
+							session_start();
+							echo $_SESSION['auth'];
+							
 							$reponse = $bdd->query('
 								SELECT pseudo, message 
 								FROM minichat 
@@ -38,15 +50,15 @@
 								ORDER BY minichat.id DESC 
 								LIMIT 0, 10');
 
-								while ($donnees = $reponse->fetch()) {
-								echo '<p><strong>' . htmlspecialchars($donnees['pseudo']) . '</strong> :' . htmlspecialchars($donnees['message']) . '</p>'; 
+							while ($donnees = $reponse->fetch()) {
+								echo '<p><strong>' . htmlspecialchars($donnees['pseudo']) . '</strong> :' . htmlspecialchars($donnees['message']) . '</p>';
 							}
 
 							$reponse->closeCursor();
 
 						?>
 					</div>
-			    <form action="minichat_post.php" method="get">
+			    <form action="minichat_post.php" method="post">
 			        <div class="input-group mb-3">
 			        	<div class="input-group-prepend">
 			        		 <input type="text" name="message" id="message" class="form-control border-danger bg-light" placeholder="Message" aria-label="message" aria-describedby="button-addon2"/>
