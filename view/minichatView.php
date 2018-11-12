@@ -26,7 +26,7 @@
 				               </div>
 				             </div>
 				            <div class="modal-footer">
-				               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				               <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
 				               <button type="submit" class="btn btn-danger">Connexion</button>
 				            </div>
 				        </form>
@@ -49,8 +49,8 @@
 		               			</div>
 		             		</div>
 		             		<div class="modal-footer">
-		               			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		               			<button type="submit" class="btn btn-primary">S'inscrire</button>
+		               			<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
+		               			<button type="submit" class="btn btn-danger">S'inscrire</button>
 		             		</div>
 		             		<div class="text-danger"><?=$messageErreur ?></div>
 		         		</form>
