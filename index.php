@@ -2,11 +2,15 @@
 
 require('model/modele.php');
 if(isset($_POST['message']) && isset($_SESSION['idUtilisateur'])){
-	sendMessage($_POST['message']);
+	sendMessage($_POST['message']); 
 }
 
 $reponse = showMessage();
 
+if(isset($_POST['deconnexion'])) {
+	$_SESSION=array(); 
+	session_destroy(); 
+}
 
 $messageErreur = "";
 if(isset($_POST['Rpassword']) && isset($_POST['Rpseudo'])) {

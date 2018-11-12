@@ -9,6 +9,12 @@
 		<title>Mini-Chat</title>
 	</head>
 	<body class="bg-dark">
+		<div style="color:white">
+		<?php
+			print_r($_SESSION);
+		 ?>
+</div>
+
 		<div class="container centered p-3">
 			<a data-toggle="modal" class="btn btn-danger" data-target="#exampleModal1">Connexion</a>
 			<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,9 +63,14 @@
 		       		</div>
 		     	</div>
    			</div>
+
+   			<form action="index.php" method="POST">
+   				<input type="hidden" name="deconnexion">
+   				<button type="submit" class="btn btn-outline-danger float-right" id="deconnexion">Déconnexion</button>
+   			</form>
    			<div class="form-group">
 				<div class="form-control shadow-lg bg-white rounded text-center font-weight-bold border-danger text-danger bg-light" id="nomchat">Chat</div>
-  					<div class="border-top-0 form-control shadow-lg p-3 mb-5 h-25 bg-white rounded border-dark bg-light" id="zonetexte">
+  					<div class="border-top-0 form-control shadow-lg p-3 h-25 bg-white rounded border-dark bg-light" id="zonetexte">
 	  					<?php
 							while ($donnees = $reponse->fetch()) {
 								echo '<p><strong>' . htmlspecialchars($donnees['pseudo']) . '</strong> :' . htmlspecialchars($donnees['message']) . '</p>';
@@ -67,9 +78,9 @@
 						?>
 					</div>
 			    <form action="index.php" method="post">
-			        <div class="input-group mb-3">
+			        <div class="input-group">
 			        	<div class="input-group-prepend">
-			        		<input type="text" name="message" id="message" class="form-control border-danger bg-light" placeholder="Message" aria-label="message" aria-describedby="button-addon2"/>
+			        		<input type="text" size="135" name="message" id="message" class="form-control border-danger bg-light" placeholder="Message" aria-label="message" aria-describedby="button-addon2"/>
 							<div class="input-group-append">
     							<button class="btn btn-outline-danger" type="submit" id="button-addon2">Envoyer</button>
   							</div>
@@ -77,6 +88,5 @@
 					</div>
 				</form>
 			</div>
-		<a href="controller/deconnexion.php"><button type="submit" class="btn btn-outline-danger" id="deconnexion">Déconnexion</button></a>
 	</body>
 </html>
