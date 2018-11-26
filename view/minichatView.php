@@ -9,12 +9,6 @@
 		<title>Mini-Chat</title>
 	</head>
 	<body class="bg-dark">
-		<div style="color:white">
-		<?php
-			print_r($_SESSION);
-		 ?>
-</div>
-
 		<div class="container centered p-3">
 			<a data-toggle="modal" class="btn btn-danger" data-target="#exampleModal1">Connexion</a>
 			<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

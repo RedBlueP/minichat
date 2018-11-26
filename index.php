@@ -1,5 +1,4 @@
 <?php
-
 require('model/modele.php');
 if(isset($_POST['message']) && isset($_SESSION['idUtilisateur'])){
 	sendMessage($_POST['message']); 
@@ -15,7 +14,6 @@ if(isset($_POST['deconnexion'])) {
 $messageErreur = "";
 if(isset($_POST['Rpassword']) && isset($_POST['Rpseudo'])) {
 	$existPas = checkUser($_POST['Rpseudo']);
-	var_dump($existPas);
 	if(!$existPas) {
 		insertUser($_POST['Rpseudo'], $_POST['Rpassword']);
 		$messageErreur = "!";
@@ -31,4 +29,21 @@ if(isset($_POST['Lpassword']) && isset($_POST['Lpseudo'])){
 	}
 }
 
-require('view/minichatView.php');
+
+require_once 'vendor/autoload.php';
+
+$loader = new Twig_Loader_Filesystem('view');
+$twig = new Twig_Environment($loader);
+
+$twig->addGlobal('session', $_SESSION);
+
+$template = $twig->loadTemplate('index.twig.html');
+
+echo $twig->render($template, array(
+	'messageErreur' => $messageErreur,
+	'reponse' => $reponse,
+	'param3' => 'reo'
+));
+
+
+//require_once 'view/minichatView.php';
